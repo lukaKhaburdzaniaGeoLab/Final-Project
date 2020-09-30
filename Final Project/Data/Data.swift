@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class FavData {
+class Data {
     
     static func getCurrentUserData(completionHandler: @escaping (UserData) -> Void) {
         let userCollection = Firestore.firestore().collection("users")

@@ -31,7 +31,7 @@ class UserViewController: UIViewController {
     //MARK: View setup
     
     func configureUserLbls() {
-        FavData.getCurrentUserData { [weak self] userData in
+        Data.getCurrentUserData { [weak self] userData in
             self?.firstNameLabel.text = userData.firstName
             self?.lastNameLabel.text = userData.lastName
         }

@@ -41,7 +41,7 @@ class FavoritesViewController: UIViewController {
     }
     
     func getFavData() {
-        FavData.getCurrentUserData { [weak self] userData in
+        Data.getCurrentUserData { [weak self] userData in
             self?.favImagesUrl = userData.favorites
             self?.favImageCollectionView.reloadData()
         }

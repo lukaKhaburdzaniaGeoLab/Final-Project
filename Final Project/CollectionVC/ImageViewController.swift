@@ -18,10 +18,7 @@ class ImageViewController: UIViewController {
     
     let photosCollection = Firestore.firestore().collection("photos")
     var homeTitle = String()
-    var images: [UIImage] = []
-    var users = [UserData]()
-    let userCollection = Firestore.firestore().collection("users")
-
+    var imagesURL: [String] = []
     
     //MARK: IBOutlets
     
@@ -32,7 +29,6 @@ class ImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PhotoData.photoDatas = []
         imageCollectionView.register(UINib(nibName: "CollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CollectionViewCell")
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
@@ -44,7 +40,7 @@ class ImageViewController: UIViewController {
                 for document in snap.documents {
                     let data = document.data()
                     let array = data[self.homeTitle.lowercased()] as? [String] ?? []
-                    PhotoData.photoDatas = array
+                    self.imagesURL = array
                 }
                 self.imageCollectionView.reloadData()
             }
@@ -56,18 +52,18 @@ class ImageViewController: UIViewController {
 
 extension ImageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        PhotoData.photoDatas.count
+        imagesURL.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        cell.imageView.kf.setImage(with: URL(string: PhotoData.photoDatas[indexPath.row]), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+        cell.imageView.kf.setImage(with: URL(string: imagesURL[indexPath.row]), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
         return cell
     }
 }
 extension ImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PhotoViewController(nibName: "PhotoViewController", bundle: nil)
-        vc.photoUrl = PhotoData.photoDatas[indexPath.row]
+        vc.photoUrl = imagesURL[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }

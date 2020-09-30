@@ -68,7 +68,7 @@ class PhotoViewController: UIViewController {
     
 
     func configureFavoriteState() {
-        FavData.getCurrentUserData { [weak self] userData in
+        Data.getCurrentUserData { [weak self] userData in
             guard let photoUrl = self?.photoUrl else { return }
             let isFavorite = userData.favorites.contains(photoUrl)
             self?.addFavBtn.isHidden = isFavorite
@@ -77,7 +77,7 @@ class PhotoViewController: UIViewController {
     }
     
     func getPurchasedData() {
-        FavData.getCurrentUserData { [weak self] userData in
+        Data.getCurrentUserData { [weak self] userData in
             self?.purchasedPhotos = userData.downloads
         }
     }

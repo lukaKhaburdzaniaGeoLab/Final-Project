@@ -41,7 +41,7 @@ class DownloadsViewController: UIViewController {
     }
     
     func getDownloads() {
-        FavData.getCurrentUserData { [weak self] userData in
+        Data.getCurrentUserData { [weak self] userData in
             self?.downImagesUrl = userData.downloads
             self?.downImagesCollectionView.reloadData()
         }
