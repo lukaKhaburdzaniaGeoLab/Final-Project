@@ -10,14 +10,20 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    @IBOutlet var logInButton: UIButton!
-    @IBOutlet var registrationButton: UIButton!
+    //MARK: IBOutlets
+    
+    @IBOutlet var logInBtn: UIButton!
+    @IBOutlet var registrationBtn: UIButton!
+    
+    //MARK: View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logInButton.layer.cornerRadius = 25.0
-        logInButton.layer.borderWidth = 2
+        Utilities.styleFilledButton(logInBtn)
+        Utilities.styleHollowButton(registrationBtn)
     }
+    
+    //MARK: View setup
     
     @IBAction func logInButtonClicked(_ sender: Any) {
         let vc = LogInViewController(nibName: "LogInViewController", bundle: nil)

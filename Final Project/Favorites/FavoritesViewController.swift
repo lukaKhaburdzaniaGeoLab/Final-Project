@@ -64,7 +64,6 @@ extension FavoritesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PhotoViewController(nibName: "PhotoViewController", bundle: nil)
         vc.photoUrl = favImagesUrl[indexPath.row]
-//        PhotoData.photo = favImagesUrl[indexPath.row]
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

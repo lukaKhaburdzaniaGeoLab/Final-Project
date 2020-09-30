@@ -38,25 +38,22 @@ class SearchTableViewController: UITableViewController {
             return categories.count
         }
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath)
-        
     }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         if searching {
             (cell as? SearchTableViewCell)?.textLabel?.text = searchedCategories[indexPath.row]
-            
         } else {
             (cell as? SearchTableViewCell)?.textLabel?.text = categories[indexPath.row]
-            
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let vc = ImageViewController(nibName: "ImageViewController", bundle: nil)
-        
         if searching {
             vc.homeTitle = searchedCategories[indexPath.row]
             vc.navigationItem.title = searchedCategories[indexPath.row]
@@ -66,7 +63,6 @@ class SearchTableViewController: UITableViewController {
         }
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
-        print(vc.homeTitle)
     }
 }
 

@@ -19,31 +19,32 @@ class LogInViewController: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var logInButton: UIButton!
-    @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var emailTxt: UITextField!
+    @IBOutlet var passwordTxt: UITextField!
+    @IBOutlet var logInBtn: UIButton!
+    @IBOutlet var errorLbl: UILabel!
     
     //MARK: View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        errorLabel.alpha = 0
+        errorLbl.alpha = 0
         hideKeyboardWhenTappedAround()
-        logInButton.layer.cornerRadius = 25.0
-        logInButton.layer.borderWidth = 2
+        Utilities.styleFilledButton(logInBtn)
+        Utilities.styleTextField(emailTxt)
+        Utilities.styleTextField(passwordTxt)
     }
     
     @IBAction func logInButtonClicked(_ sender: Any) {
         // Create cleaned versions of the text field
-        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         // Signing in the user
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 // Couldn't sign in
-                self.errorLabel.text = error!.localizedDescription
-                self.errorLabel.alpha = 1
+                self.errorLbl.text = error!.localizedDescription
+                self.errorLbl.alpha = 1
             }
             else {
                 let vc = TabBarController(nibName: "TabBarController", bundle: nil)

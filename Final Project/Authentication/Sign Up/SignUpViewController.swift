@@ -15,33 +15,38 @@ class SignUpViewController: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet var firstNameTextField: UITextField!
-    @IBOutlet var lastNameTextField: UITextField!
-    @IBOutlet var emailTextField: UITextField!
-    @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var signUpButton: UIButton!
-    @IBOutlet var errorLabel: UILabel!
+    @IBOutlet var firstNameTxt: UITextField!
+    @IBOutlet var lastNameTxt: UITextField!
+    @IBOutlet var emailTxt: UITextField!
+    @IBOutlet var passwordTxt: UITextField!
+    @IBOutlet var signUpBtn: UIButton!
+    @IBOutlet var errorLbl: UILabel!
     
     //MARK: View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
-        errorLabel.alpha = 0
+        errorLbl.alpha = 0
+        Utilities.styleHollowButton(signUpBtn)
+        Utilities.styleTextField(firstNameTxt)
+        Utilities.styleTextField(lastNameTxt)
+        Utilities.styleTextField(emailTxt)
+        Utilities.styleTextField(passwordTxt)
     }
     
     //MARK: View setup
     
     func validateFields() -> String? {
         // Check that all fields are filled in
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if firstNameTxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            lastNameTxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTxt.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill in all fields."
         }
         // Check if the password is secure
-        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanedPassword = passwordTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if Utilities.isPasswordValid(cleanedPassword) == false {
             // Password isn't secure enough
             return "Please make sure your password is at least 8 characters, contains a special character and a number."
@@ -58,10 +63,10 @@ class SignUpViewController: UIViewController {
         }
         else {
             // Create cleaned versions of the data
-            let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let firstName = firstNameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let lastName = lastNameTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let email = emailTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let password = passwordTxt.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 // Check for errors
@@ -85,8 +90,8 @@ class SignUpViewController: UIViewController {
     }
     
     func showError(_ message:String) {
-        errorLabel.text = message
-        errorLabel.alpha = 1
+        errorLbl.text = message
+        errorLbl.alpha = 1
     }
     
     func transitionToHome() {

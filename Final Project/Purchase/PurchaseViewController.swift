@@ -52,7 +52,6 @@ class PurchaseViewController: UIViewController {
         }else{
             guard let currentUserId = Auth.auth().currentUser?.uid else { return }
             self.userCollection.document(currentUserId).updateData(["downloads":FieldValue.arrayUnion([self.purchasedPhotoUrl])])
-//            PhotoData.purchasedPhoto.append(self.purchasedPhotoUrl)
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -15,8 +15,9 @@ class UserViewController: UIViewController {
     
     //MARK: IBOutlets
     
-    @IBOutlet var firstNameText: UITextView!
-    @IBOutlet var lastNameText: UITextView!
+
+    @IBOutlet var firstNameLbl: UILabel!
+    @IBOutlet var lastNamelbl: UILabel!
     @IBOutlet var signOutButton: UIButton!
     @IBOutlet var firstNameLabel: UILabel!
     @IBOutlet var lastNameLabel: UILabel!
@@ -26,6 +27,9 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUserLbls()
+        Utilities.styleFilledButton(signOutButton)
+        firstNameLbl.textColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1)
+        lastNamelbl.textColor = UIColor.init(red: 48/255, green: 173/255, blue: 99/255, alpha: 1)
     }
     
     //MARK: View setup

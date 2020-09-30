@@ -11,7 +11,6 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class Data {
-    
     static func getCurrentUserData(completionHandler: @escaping (UserData) -> Void) {
         let userCollection = Firestore.firestore().collection("users")
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
