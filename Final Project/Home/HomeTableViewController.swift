@@ -76,7 +76,5 @@ extension HomeTableViewController: UITableViewDelegate, UITableViewDataSource {
         vc.navigationItem.title = categories[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
-        print(vc.homeTitle)
-        
     }
 }

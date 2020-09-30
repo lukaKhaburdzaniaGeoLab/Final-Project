@@ -10,9 +10,4 @@ import UIKit
 
 class SearchTableViewCell: UITableViewCell {
 
-    @IBOutlet var setText: UILabel!
-    
-    func setTitle (_ text: String) {
-        setText.text = text
-    }
 }
