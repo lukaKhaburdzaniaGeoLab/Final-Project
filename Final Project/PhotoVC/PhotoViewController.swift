@@ -24,7 +24,8 @@ class PhotoViewController: UIViewController {
     @IBOutlet var removeFavBtn: UIButton!
     @IBOutlet var addFavBtn: UIButton!
     @IBOutlet var photoImageView: UIImageView!
-
+    @IBOutlet var priceLbl: UILabel!
+    
     //MARK: View life cycle
     
     override func viewDidLoad() {

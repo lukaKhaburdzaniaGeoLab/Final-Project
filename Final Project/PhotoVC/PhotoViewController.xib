@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="addFavBtn" destination="VS0-7n-EoQ" id="46b-CD-STm"/>
                 <outlet property="photoImageView" destination="BcH-7g-cOy" id="SXk-jI-rd1"/>
+                <outlet property="priceLbl" destination="Kp4-KB-cym" id="IyP-tB-OVu"/>
                 <outlet property="removeFavBtn" destination="i0Y-jN-SEt" id="kcr-qs-DO8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,6 +41,13 @@
                         <action selector="removeFavBtnClicked:" destination="-1" eventType="touchUpInside" id="dqt-Q4-Rmk"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price: 9,99$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-KB-cym">
+                    <rect key="frame" x="120" y="607" width="134" height="89"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
