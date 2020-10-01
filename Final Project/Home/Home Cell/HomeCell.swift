@@ -2,7 +2,7 @@
 //  HomeCell.swift
 //  Final Project
 //
-//  Created by Ilia Khaburdzania on 9/30/20.
+//  Created by Luka Khaburdzania on 9/30/20.
 //  Copyright © 2020 Luka Khaburdzania. All rights reserved.
 //
 
